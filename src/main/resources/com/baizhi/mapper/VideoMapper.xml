@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.VideoMapper">
+
+    <select id="queryByReleaseTime" resultType="com.baizhi.po.VideoPO">
+
+        select
+          c.name cateName,
+          v.id,v.title videoTitle,v.cover_path cover,v.video_path path,
+          v.upload_time uploadTime,v.brief description,v.like_count likeCount,
+          u.src userPhoto
+        from yx_category c
+        right join yx_video v on c.id=v.category_id
+        left join yx_user u on v.user_id=u.id
+        order by v.upload_time desc
+    </select>
+
+
+    <select id="queryname" resultType="com.baizhi.po.VideoPOS" parameterType="String">
+
+        select
+          c.id categoryId,c.name cateName,
+          v.id,v.title videoTitle,v.cover_path cover,v.video_path path,
+          v.upload_time uploadTime,v.brief description,v.like_count likeCount,
+          u.id userId,u.name userName
+        from yx_category c
+        right join yx_video v on c.id=v.category_id
+        left join yx_user u on v.user_id=u.id
+        where v.title like '%${content}%'
+        order by v.upload_time desc
+
+    </select>
+
+
+    <select id="queryid" resultType="com.baizhi.po.VideoPOS" parameterType="String">
+
+        select
+          c.id categoryId,c.name cateName,
+          v.id,v.title videoTitle,v.cover_path cover,v.video_path path,
+          v.upload_time uploadTime,v.brief description,v.like_count likeCount,
+          u.id userId,u.name userName
+        from yx_category c
+        right join yx_video v on c.id=v.category_id
+        left join yx_user u on v.user_id=u.id
+        where c.id like #{cateId}
+        order by v.upload_time desc
+
+    </select>
+
+</mapper>
+

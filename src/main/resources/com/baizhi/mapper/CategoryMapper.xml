@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.CategoryMapper">
+
+    <resultMap type="com.baizhi.po.CategoryPO" id="categoryPOs">
+        <id column="cid" property="id"/>
+        <result column="ccateName" property="cateName"/>
+        <result column="clevels" property="levels"/>
+        <collection property="categoryList" ofType="com.baizhi.po.CategoryPO" >
+            <id column="sid" property="id"/>
+            <result column="scateName" property="cateName"/>
+            <result column="slevels" property="levels"/>
+            <result column="sparentId" property="parentId"/>
+        </collection>
+    </resultMap>
+
+
+
+    <select id="findAllms" resultMap="categoryPOs">
+
+        select c1.id cid,c1.name ccateName,c1.grade clevels,
+               c2.id sid,c2.name scateName,c2.grade slevels,c2.parentclass sparentId
+        from yx_category c1 left join yx_category c2
+        on c1.id = c2.parentclass
+        where c1.grade = 1
+
+    </select>
+
+
+</mapper>

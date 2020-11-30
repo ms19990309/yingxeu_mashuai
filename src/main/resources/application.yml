@@ -1,0 +1,39 @@
+server:
+  port: 8989 #修改内嵌服务器端口号
+  servlet:
+    context-path: /yx
+    servlet.jsp.init-parameters.development: true
+
+
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yingxeu?characterEncoding=UTF-8
+    username: root
+    password: root
+  servlet:
+    multipart:
+      max-file-size: 50MB       #单个文件最大限度
+      max-request-size: 100MB   #一次请求最大携带文件大小
+  redis:
+    host: 192.168.100.154
+    database: 0
+    port: 7000
+
+
+
+  mvc:
+    view:
+      prefix: / #在webapp
+      suffix: .jsp #指定后缀
+
+
+mybatis:
+  mapper-locations: classpath:com/baizhi/mapper/*.xml
+  type-aliases-package: com/baizhi/entity
+
+
+
+
