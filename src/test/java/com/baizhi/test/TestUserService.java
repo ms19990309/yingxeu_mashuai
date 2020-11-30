@@ -18,7 +18,7 @@ public class TestUserService {
 
     @Test
     public void testfindAllms(){
-        System.out.println(userService.queryTJ("男","12"));
+        System.out.println(userService.queryTJ("帅帅","12"));
     }
 
 
