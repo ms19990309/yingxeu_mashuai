@@ -17,13 +17,13 @@ public class TestUserService {
     private UserService userService;
 
     @Test
-    public void testfindAll(){
+    public void testfindAllms(){
         System.out.println(userService.queryTJ("男","12"));
     }
 
 
     @Test
-    public void testfindAlls(){
+    public void testfindAllmsy(){
         System.out.println(userService.queryStatus("山西","女"));
     }
 
